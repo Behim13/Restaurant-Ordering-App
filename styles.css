@@ -66,7 +66,7 @@ header {
   font-size: 1.4rem;
 }
 
-.menu-item button {
+.add-btn {
   font-size: 2rem;
   margin-right: 40px;
   background-color: transparent;
@@ -127,4 +127,8 @@ header {
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }

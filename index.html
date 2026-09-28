@@ -17,35 +17,15 @@
     />
   </head>
   <body>
-    <main>
+    <main id="app">
       <header>
         <h1>Jimmy's Diner</h1>
         <h3>The best burgers and pizzas in town</h3>
       </header>
-      <section id="menu"></section>
-      <h2 class="order-title">Your order</h2>
-      <div class="order">
-        <div class="order-item">
-          <div>
-            <h2>Pizza</h2>
-            <button class="remove-btn">remove</button>
-          </div>
-          <p>$14</p>
-        </div>
-        <div class="order-item">
-          <div>
-            <h2>Beer</h2>
-            <button class="remove-btn">remove</button>
-          </div>
-          <p>$12</p>
-        </div>
-        <div class="order-line"></div>
-        <div class="order-totals">
-          <h2>Total price:</h2>
-          <p>$26</p>
-        </div>
-        <button class="complete-order-btn">Complete Order</button>
-      </div>
+      <section id="menu">
+        <!-- Added with JS -->
+      </section>
+      <div class="order hidden"></div>
     </main>
     <script src="script.js" type="module"></script>
   </body>
