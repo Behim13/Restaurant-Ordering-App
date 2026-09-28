@@ -83,7 +83,7 @@ function renderOrder() {
         <h2>Total price:</h2>
         <p>$${totalPrice}</p>
     </div>
-    <button class="complete-order-btn">Complete Order</button>
+    <button class="green-btn">Complete Order</button>
     `;
 }
 
