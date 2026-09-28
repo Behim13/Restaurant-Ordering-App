@@ -102,6 +102,7 @@ header {
   border: none;
   color: rgb(147, 144, 144);
   padding-top: 3px;
+  cursor: pointer;
 }
 
 .order-line {

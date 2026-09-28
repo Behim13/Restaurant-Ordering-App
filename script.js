@@ -1,7 +1,10 @@
 import { menuArray } from "/data.js";
 
+let orderArray = [];
+
 const menuEl = document.getElementById("menu");
 const appEl = document.getElementById("app");
+const orderDiv = document.querySelector(".order");
 
 appEl.addEventListener("click", handleClickEvent);
 
@@ -10,15 +13,14 @@ function handleClickEvent(e) {
   if (!button) return;
 
   //   Checking what class of btn is clicked
-  if ((button.classList.value = "add-btn")) {
+  if (button.classList.value === "add-btn") {
     handleAddBtn(button);
-  } else if ((button.classList.value = "remove-btn")) {
+  } else if (button.classList.value === "remove-btn") {
     handleRemoveBtn(button);
   }
 }
 
 // Needed for handleAdd and handleRemoveBtns
-let orderHtml = ``;
 let totalPrice = 0;
 
 function handleAddBtn(button) {
@@ -28,25 +30,50 @@ function handleAddBtn(button) {
   // 3. add id to orderHtml
   // 4.
 
-  const orderDiv = document.querySelector(".order");
-
   //   makes order div visible
   if (orderDiv.classList.value.includes("hidden"))
     orderDiv.classList.remove("hidden");
 
-  const item = menuArray.find((item) => {
-    return item.id == button.dataset.id;
-  });
+  const item = findItemId(button.dataset.id);
 
   totalPrice += item.price;
 
-  orderHtml += `<div class="order-item">
+  orderArray.push(item);
+
+  renderOrder();
+}
+
+function handleRemoveBtn(button) {
+  const item = findItemId(button.dataset.id);
+
+  // chatgpt code
+  const index = orderArray.findIndex((arrItem) => arrItem.id === item.id);
+
+  if (index !== -1) {
+    totalPrice -= item.price;
+    orderArray.splice(index, 1);
+  }
+
+  renderOrder();
+}
+
+function findItemId(id) {
+  return menuArray.find((item) => {
+    return item.id == id;
+  });
+}
+
+function renderOrder() {
+  let orderHtml = ``;
+  orderArray.forEach((item) => {
+    orderHtml += `<div class="order-item">
         <div>
             <h2>${item.name}</h2>
-            <button class="remove-btn">remove</button>
+            <button class="remove-btn" data-id='${item.id}'>remove</button>
         </div>
         <p>$${item.price}</p>
     </div>`;
+  });
 
   orderDiv.innerHTML = `
     <h2 class="order-title">Your order</h2>
@@ -58,10 +85,6 @@ function handleAddBtn(button) {
     </div>
     <button class="complete-order-btn">Complete Order</button>
     `;
-}
-
-function handleRemoveBtn(button) {
-  console.log(button);
 }
 
 renderMenu();
@@ -76,7 +99,7 @@ function renderMenu() {
         <p>${item.ingredients.join(", ")}</p>
         <p class="item-price">$${item.price}</p>
     </div>
-    <button class = 'add-btn' data-id = '${item.id}'>+</button>
+    <button class='add-btn' data-id='${item.id}'>+</button>
 </div>`;
   });
 }
