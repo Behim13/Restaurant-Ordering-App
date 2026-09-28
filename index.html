@@ -23,13 +23,28 @@
         <h3>The best burgers and pizzas in town</h3>
       </header>
       <section id="menu"></section>
-      <div class="bill">
-        <h2>Your order</h2>
-        <div>
-          <h3>Pizza</h3>
-          <button>remove</button>
+      <h2 class="order-title">Your order</h2>
+      <div class="order">
+        <div class="order-item">
+          <div>
+            <h2>Pizza</h2>
+            <button class="remove-btn">remove</button>
+          </div>
           <p>$14</p>
         </div>
+        <div class="order-item">
+          <div>
+            <h2>Beer</h2>
+            <button class="remove-btn">remove</button>
+          </div>
+          <p>$12</p>
+        </div>
+        <div class="order-line"></div>
+        <div class="order-totals">
+          <h2>Total price:</h2>
+          <p>$26</p>
+        </div>
+        <button class="complete-order-btn">Complete Order</button>
       </div>
     </main>
     <script src="script.js" type="module"></script>
