@@ -165,3 +165,17 @@ header {
 .hidden {
   display: none;
 }
+
+.thankYouDiv {
+  background-color: #ecfdf5;
+  border: none;
+  width: 100%;
+  color: #065f46;
+  text-align: center;
+  padding: 10px 0;
+  margin: 20px 0;
+}
+
+.thankYouDiv p {
+  font-size: 2rem;
+}

@@ -13,11 +13,28 @@ function handleClickEvent(e) {
   if (!button) return;
 
   //   Checking what class of btn is clicked
-  if (button.classList.value === "add-btn") {
+  if (button.classList.value.includes("add-btn")) {
     handleAddBtn(button);
-  } else if (button.classList.value === "remove-btn") {
+  } else if (button.classList.value.includes("remove-btn")) {
     handleRemoveBtn(button);
+  } else if (button.classList.value.includes("complete")) {
+    handleCompleteBtn();
+  } else if (button.classList.value.includes("pay-btn")) {
+    handlePayBtn();
   }
+}
+
+function handlePayBtn() {
+  // Preventing default form behaviour of reloading page
+  document.querySelector("form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    document.querySelector(".payingCard").classList.add("hidden");
+    const name = document.getElementById("input-name").value;
+
+    orderDiv.innerHTML = `<div class='thankYouDiv'>
+          <p>Thanks, ${name}! Your order is on its way!</p>
+      </div>`;
+  });
 }
 
 // Needed for handleAdd and handleRemoveBtns
@@ -63,6 +80,10 @@ function findItemId(id) {
   });
 }
 
+function handleCompleteBtn() {
+  document.querySelector(".payingCard").classList.remove("hidden");
+}
+
 function renderOrder() {
   let orderHtml = ``;
   orderArray.forEach((item) => {
@@ -83,7 +104,7 @@ function renderOrder() {
         <h2>Total price:</h2>
         <p>$${totalPrice}</p>
     </div>
-    <button class="green-btn">Complete Order</button>
+    <button class="green-btn completeOrder">Complete Order</button>
     `;
 }
 

@@ -28,10 +28,17 @@
       <div class="order hidden"></div>
       <div class="payingCard hidden">
         <h1>Enter card details</h1>
-        <input type="text" placeholder="Enter your name" />
-        <input type="text" placeholder="Enter card number" />
-        <input type="text" placeholder="Enter CVV" />
-        <button class="green-btn">Pay</button>
+        <form>
+          <input
+            type="text"
+            id="input-name"
+            required
+            placeholder="Enter your name"
+          />
+          <input type="text" required placeholder="Enter card number" />
+          <input type="text" required placeholder="Enter CVV" />
+          <button class="green-btn pay-btn">Pay</button>
+        </form>
       </div>
     </main>
     <script src="script.js" type="module"></script>
