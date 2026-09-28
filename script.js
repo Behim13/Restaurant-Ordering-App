@@ -46,7 +46,7 @@ function handleAddBtn(button) {
 function handleRemoveBtn(button) {
   const item = findItemId(button.dataset.id);
 
-  // chatgpt code
+  // removing the selected item
   const index = orderArray.findIndex((arrItem) => arrItem.id === item.id);
 
   if (index !== -1) {
